@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.StaffListMapper">
+  <resultMap id="BaseResultMap" type="com.example.domain.StaffList">
+    <result column="ID" jdbcType="TINYINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="zip code" jdbcType="VARCHAR" property="zipCode" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="SID" jdbcType="TINYINT" property="sid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.domain.StaffList">
+    insert into staff_list (ID, `name`, address, 
+      `zip code`, phone, city, 
+      country, SID)
+    values (#{id,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{zipCode,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{sid,jdbcType=TINYINT})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, `name`, address, `zip code`, phone, city, country, SID
+    from staff_list
+  </select>
+</mapper>

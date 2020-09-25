@@ -5,6 +5,7 @@
 <generatorConfiguration>
     <!--  mysql数据源配置文件路径  -->
     <properties resource="mysql.properties"/>
+
     <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
         <!--autoDelimitKeywords，当表名或者字段名为SQL关键字的时候，可以设置该属性为true，
         MBG会自动给表名或字段名添加分隔符-->
@@ -40,7 +41,7 @@
         <!--  接口生成路径  -->
         <javaClientGenerator targetPackage="${targetMapperPackage}" targetProject="${targetJavaProject}"
                              type="XMLMAPPER"/>
-        <table tableName="%">
+        <table tableName="patrol_point_do_task%">
             <!--大部分数据库服务器对象的命名是不分大小写的,因此使用Snake Case命名风格还是十分有必要的。-->
             <!-- MyBatis Generator考虑的还真是仔细,将Snake Case转换为Camel Case以与Java风格保持一致。-->
             <property name="useActualColumnNames" value="false"/>

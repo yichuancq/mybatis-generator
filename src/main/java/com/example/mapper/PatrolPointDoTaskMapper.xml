@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.PatrolPointDoTaskMapper">
+    <resultMap id="BaseResultMap" type="com.example.domain.PatrolPointDoTask">
+        <id column="uuid" jdbcType="VARCHAR" property="uuid"/>
+        <result column="build_id" jdbcType="VARCHAR" property="buildId"/>
+        <result column="patrol_name" jdbcType="VARCHAR" property="patrolName"/>
+        <result column="patrol_type" jdbcType="VARCHAR" property="patrolType"/>
+        <result column="required_time" jdbcType="TIMESTAMP" property="requiredTime"/>
+        <result column="arrival_time" jdbcType="TIMESTAMP" property="arrivalTime"/>
+        <result column="isDone" jdbcType="VARCHAR" property="isdone"/>
+        <result column="x" jdbcType="INTEGER" property="x"/>
+        <result column="y" jdbcType="INTEGER" property="y"/>
+        <result column="radius" jdbcType="INTEGER" property="radius"/>
+        <result column="patrol_man_id" jdbcType="VARCHAR" property="patrolManId"/>
+        <result column="patrol_man_name" jdbcType="VARCHAR" property="patrolManName"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="create_by" jdbcType="VARCHAR" property="createBy"/>
+        <result column="update_by" jdbcType="VARCHAR" property="updateBy"/>
+        <result column="delete_flag" jdbcType="VARCHAR" property="deleteFlag"/>
+        <result column="enable_flag" jdbcType="VARCHAR" property="enableFlag"/>
+        <result column="memo" jdbcType="VARCHAR" property="memo"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from patrol_point_do_task
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.example.domain.PatrolPointDoTask">
+    insert into patrol_point_do_task (uuid, build_id, patrol_name, 
+      patrol_type, required_time, arrival_time, 
+      isDone, x, y, radius, 
+      patrol_man_id, patrol_man_name, create_time, 
+      update_time, create_by, update_by, 
+      delete_flag, enable_flag, memo
+      )
+    values (#{uuid,jdbcType=VARCHAR}, #{buildId,jdbcType=VARCHAR}, #{patrolName,jdbcType=VARCHAR}, 
+      #{patrolType,jdbcType=VARCHAR}, #{requiredTime,jdbcType=TIMESTAMP}, #{arrivalTime,jdbcType=TIMESTAMP}, 
+      #{isdone,jdbcType=VARCHAR}, #{x,jdbcType=INTEGER}, #{y,jdbcType=INTEGER}, #{radius,jdbcType=INTEGER}, 
+      #{patrolManId,jdbcType=VARCHAR}, #{patrolManName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, 
+      #{deleteFlag,jdbcType=VARCHAR}, #{enableFlag,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}
+      )
+  </insert>
+    <update id="updateByPrimaryKey" parameterType="com.example.domain.PatrolPointDoTask">
+    update patrol_point_do_task
+    set build_id = #{buildId,jdbcType=VARCHAR},
+      patrol_name = #{patrolName,jdbcType=VARCHAR},
+      patrol_type = #{patrolType,jdbcType=VARCHAR},
+      required_time = #{requiredTime,jdbcType=TIMESTAMP},
+      arrival_time = #{arrivalTime,jdbcType=TIMESTAMP},
+      isDone = #{isdone,jdbcType=VARCHAR},
+      x = #{x,jdbcType=INTEGER},
+      y = #{y,jdbcType=INTEGER},
+      radius = #{radius,jdbcType=INTEGER},
+      patrol_man_id = #{patrolManId,jdbcType=VARCHAR},
+      patrol_man_name = #{patrolManName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=VARCHAR},
+      enable_flag = #{enableFlag,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select uuid, build_id, patrol_name, patrol_type, required_time, arrival_time, isDone, 
+    x, y, radius, patrol_man_id, patrol_man_name, create_time, update_time, create_by, 
+    update_by, delete_flag, enable_flag, memo
+    from patrol_point_do_task
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+    select uuid, build_id, patrol_name, patrol_type, required_time, arrival_time, isDone, 
+    x, y, radius, patrol_man_id, patrol_man_name, create_time, update_time, create_by, 
+    update_by, delete_flag, enable_flag, memo
+    from patrol_point_do_task
+  </select>
+
+</mapper>

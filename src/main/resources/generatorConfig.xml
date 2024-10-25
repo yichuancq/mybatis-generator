@@ -6,12 +6,16 @@
     <context id="context1">
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <!-- 使用自定义的插件 -->
-        <commentGenerator type="com.example.gen.MyCommentGenerator"></commentGenerator>
+        <commentGenerator type="com.example.gen.MyCommentGenerator">
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
 
         <!--配置数据库连接-->
         <jdbcConnection driverClass="oracle.jdbc.OracleDriver"
                         connectionURL="jdbc:oracle:thin:@localhost:1521:orcledb"
                         userId="c##yc" password="Pwd#123456">
+            <!-- 针对oracle数据库 -->
+            <property name="remarksReporting" value="true"></property>
         </jdbcConnection>
 
 

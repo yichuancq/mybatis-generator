@@ -14,7 +14,7 @@ import java.util.Properties;
 /**
  * @author yichuan
  * @version 1.0
- * @description: TODO
+ * @description: MyCommentGenerator
  * @date 2024/10/25 22:13
  */
 public class MyCommentGenerator extends DefaultCommentGenerator {
@@ -33,7 +33,12 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         currentDateStr = (new SimpleDateFormat("yyyy-MM-dd")).format(new Date());
     }
 
-
+    /***
+     * 添加注释
+     * @param field
+     * @param introspectedTable
+     * @param introspectedColumn
+     */
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
         if (suppressAllComments) {
             return;
@@ -41,8 +46,11 @@ public class MyCommentGenerator extends DefaultCommentGenerator {
         StringBuilder sb = new StringBuilder();
         field.addJavaDocLine("/**");
         sb.append(" * ");
-        //  sb.append(introspectedColumn.getRemarks());
-        sb.append(introspectedColumn.getActualColumnName());
+        System.out.println("列名称:" + introspectedColumn.getActualColumnName());
+        System.out.println("备注:" + introspectedColumn.getRemarks());
+        //获取表字段的备注，数据库有备注，但是java通过API得到的introspectedColumn.getRemarks()为空
+        sb.append(introspectedColumn.getRemarks());
+//        sb.append(introspectedColumn.getActualColumnName());
         field.addJavaDocLine(sb.toString().replace("\n", " "));
         field.addJavaDocLine(" */");
     }
